@@ -1,28 +1,30 @@
 <?php
 
 class Pokemon {
+    public static $Counter = 0;
+
+    public $Id; // unique number for each object
+    public $EnergyType;
     public $Name;
-    public $CurrentHealth;
-    public $MaxHealth;
+    public $Health;
+    public $Attacks;    // array of Attack objects
+    public $Weakness;   // reference to Weakness object
+    public $Resistance;   // reference to Resistance object
 
-    public $Defense;    // this will be substracted from any attack
+    public function __construct($nm, $hp, $et) {
+        self::$Counter = self::$Counter + 1;
+        $this->Id = self::$Counter;
 
-    public $Attacks;    // array
-
-
-    public function __construct($nm, $def, $maxhealth) {
         $this->Name = $nm;
-        $this->Defense = $def;
-        $this->MaxHealth = $maxhealth;
-        $this->CurrentHealth = $this->MaxHealth;
+        $this->EnergyType = $et;
+        $this->Health = $hp;
         $this->Attacks = [];
-
     }
 
-    public function DoDamage($dmg) {
-        $calculatedDamage = $dmg - $this->Defense;
-        if( $calculatedDamage > 0) {
-            $this->CurrentHealth = $this->CurrentHealth - $calculatedDamage;
-        }
+    public function DoDamage($energyType, $damage) {
+        //$calculatedDamage = $dmg - $this->Defense;
+        //if( $calculatedDamage > 0) {
+        //    $this->CurrentHealth = $this->CurrentHealth - $calculatedDamage;
+        //}
     }
 }

@@ -11,7 +11,7 @@ class Attack {
 
     public function Execute($target) {
         if ($target == null) {
-            die('Cannot execute Attack; target is null');
+            echo 'Cannot execute Attack; target is null';
         }
 /*
         if (gettype($target) !=  "Pokemon") {
