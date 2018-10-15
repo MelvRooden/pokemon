@@ -1,14 +1,15 @@
 <?php
 
+//template for making a pokemon
 class Pokemon
 {
-    public $name; //The name of the Pokemon
-    public $type; //The Type of the Pokemon
-    public $health; //The amount of health the Pokemon has
-    Public $hitPoints; //The amount of hitPoints the Pokemon has
-    public $resistance; //The Strength of the Pokemon
-    public $weakness; //The Weakness of the Pokemon
-    public $attacks = []; //The Attacks of the Pokemon
+    public $name; //the name of the pokemon
+    public $type; //the Type of the pokemon
+    public $health; //the amount of health the pokemon has
+    Public $hitPoints; //the amount of hitPoints the pokemon has
+    public $resistance; //the Strength of the pokemon
+    public $weakness; //the Weakness of the pokemon
+    public $attacks = []; //the Attacks of the pokemon
 
 
     public function __construct($_name, $_type, $_health, $_hitPoints, $_resistance, $_weakness, $_attacks)

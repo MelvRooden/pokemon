@@ -1,9 +1,11 @@
 <?php
 
+//template for making an attack
 class Attack
 {
-    public $name;
-    public $damage;
+    public $name; //the name of the attack
+    public $damage; //the amount of damage points
+
 
     public function __construct($_name, $_damage)
     {

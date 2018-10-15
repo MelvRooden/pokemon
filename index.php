@@ -51,19 +51,19 @@ var_dump($poke1);
 
 
 echo "<br>";
-//starts the attackCalc function
+//starts the attack function and sends the needed information to the function
 $result0 = $poke0->attack($poke0->attacks[0], $poke0, $poke1);
 
 //displays what happens in the pokemon fight on screen
-//displays fight on screen
+//displays fight one on screen
 echo $poke0->name . " attacks " . $poke1->name . " with " . $poke0->attacks[0]->name . " and deals " . $result0[0] . " damage. ";
 echo "<br>";
 echo $poke1->name . " has " . $result0[1] . " hitpoints of the " . $poke1->health . " left.";
 
+echo "<br>";
+echo "<br>";
 
-echo "<br>";
-echo "<br>";
-//starts the attackCalc function
+//starts the attack function and sends the needed information to the function
 $result1 = $poke1->attack($poke1->attacks[1], $poke1, $poke0);
 
 //displays fight two on screen
@@ -72,5 +72,6 @@ echo "<br>";
 echo $poke0->name . " has " . $result1[1] . " hitpoints of the " . $poke1->health . " left.";
 
 echo "<br>";
+//displays the stats of the pokemon on screen
 var_dump($poke0);
 var_dump($poke1);
