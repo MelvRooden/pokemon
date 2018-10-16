@@ -49,7 +49,7 @@ class Pokemon
         //takes the amount of damage off the attacked pokemon's hitPoints
         $attack_result = $defender->hitPoints - $attack_damage;
 
-        //puts all the results to $result
+        //puts all the results into $result
         $result = [$attack_damage, $attack_result];
 
         //saves the result in the pokemon
