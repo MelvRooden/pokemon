@@ -1,10 +1,24 @@
-<?
+<?php
 include 'Pokemon.php';
 include 'Type.php';
 include 'Resistance.php';
 include 'Weakness.php';
 include 'Attack.php';
+include 'Picture.php';
+?>
 
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>PokeBattle</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+
+<?php
 //making new energy types
 $types = [
         new Type("Lightning"),
@@ -22,8 +36,12 @@ $poke0 = new Pokemon(
     new Resistance($types[3], 20),
     new Weakness($types[1], 1.5),
     [
-    new Attack('Electric Ring', 50),
-    new Attack('Pika Punch', 20)
+        new Attack('Electric Ring', 50),
+        new Attack('Pika Punch', 20)
+    ],
+    [
+        new Picture('front', 'img/pikachu.gif'),
+        new Picture('back', 'img/pikachu-back.gif')
     ]
 );
 
@@ -36,42 +54,85 @@ $poke1 = new Pokemon(
     new Resistance($types[0], 10),
     new Weakness($types[2], 2),
     [
-    new Attack('Head Butt', 10),
-    new Attack('Flare', 30)
+        new Attack('Head Butt', 10),
+        new Attack('Flare', 30)
+    ],
+    [
+        new Picture('front', 'img/charmeleon.gif'),
+        new Picture('back', 'img/charmeleon-back.gif')
     ]
 );
 
 
 //displays the stats of the pokemon on screen
-echo "Pokemon Stats " . $poke0->name;
-var_dump($poke0);
 
-echo "Pokemon Stats " . $poke1->name;
-var_dump($poke1);
 
 
 echo "<br>";
-//starts the attack function and sends the needed information to the function
-$result0 = $poke0->attack($poke0->attacks[0], $poke0, $poke1);
 
-//displays what happens in the pokemon fight on screen
-//displays fight one on screen
-echo $poke0->name . " attacks " . $poke1->name . " with " . $poke0->attacks[0]->name . " and deals " . $result0[0] . " damage. ";
-echo "<br>";
-echo $poke1->name . " has " . $result0[1] . " hitpoints of the " . $poke1->health . " left.";
+echo "<div class=\"col-md-offset-7\">";
+    echo "<div class=\"col-md-offset-0\">";
+
+        echo $poke1->name . "'s stats"; echo "<br>";
+        echo "Type " . $poke1->type->types->type . ". ";
+        echo "Health " . $poke1->health . " ";
+        echo "Resistance " . $poke1->resistance->name->type . ". ";
+        echo "Weakness " . $poke1->weakness->name->type . ". ";
+        echo "Attack 1: " . $poke1->attacks[0]->name . " " . $poke1->attacks[0]->damage . ". ";
+        echo "Attack 2: " . $poke1->attacks[1]->name . " " . $poke1->attacks[1]->damage;
+
+        echo "<br>";
+
+        //displays an image of the pokemon
+        echo "<img width=30% src=" . $poke1->picture[0]->location . " alt=" . "A photo the" . $poke0->name . ">";
+
+        echo "<br>";
+
+        //starts the attack function and sends the needed information to the function
+        $result1 = $poke1->attack($poke1->attacks[1], $poke1, $poke0);
+
+        //displays fight two on screen
+        echo $poke1->name . " attacks " . $poke0->name . " with " . $poke1->attacks[1]->name . " and deals " . $result1[0] . " damage.";
+        echo "<br>";
+        echo $poke0->name . " has " . $result1[1] . " hitpoints of the " . $poke1->health . " left.";
+
+    echo "</div>";
+echo "</div>";
 
 echo "<br>";
 echo "<br>";
 
-//starts the attack function and sends the needed information to the function
-$result1 = $poke1->attack($poke1->attacks[1], $poke1, $poke0);
+echo "<div class=\"col-md-offset-1\">";
+    echo "<div class=\"col-md-offset-0\">";
 
-//displays fight two on screen
-echo $poke1->name . " attacks " . $poke0->name . " with " . $poke1->attacks[1]->name . " and deals " . $result1[0] . " damage.";
-echo "<br>";
-echo $poke0->name . " has " . $result1[1] . " hitpoints of the " . $poke1->health . " left.";
+        echo $poke0->name . "'s stats"; echo "<br>";;
+        echo "Type" . $poke0->type->types->type . ". ";
+        echo "Health " . $poke0->health . ". ";
+        echo "Resistance " . $poke0->resistance->name->type . ". ";
+        echo "Weakness " . $poke0->weakness->name->type . ". ";
+        echo "Attack 1: " . $poke0->attacks[0]->name . " " . $poke0->attacks[0]->damage . ". ";
+        echo "Attack 2: " . $poke0->attacks[1]->name . " " . $poke0->attacks[1]->damage;
 
-echo "<br>";
-//displays the stats of the pokemon on screen
-var_dump($poke0);
-var_dump($poke1);
+        echo "<br>";
+
+        //displays an image of the pokemon
+        echo "<img width=30% src=" . $poke0->picture[1]->location . " alt=" . "A photo the" . $poke0->name . ">";
+
+        echo "<br>";
+
+        //starts the attack function and sends the needed information to the function
+        $result0 = $poke0->attack($poke0->attacks[0], $poke0, $poke1);
+
+        //displays what happens in the pokemon fight on screen
+        //displays fight one on screen
+        echo $poke0->name . " attacks " . $poke1->name . " with " . $poke0->attacks[0]->name . " and deals " . $result0[0] . " damage. ";
+        echo "<br>";
+        echo $poke1->name . " has " . $result0[1] . " hitpoints of the " . $poke1->health . " left.";
+        echo "<br>";
+
+    echo "</div>";
+echo "</div>";
+
+?>
+</body>
+</html>

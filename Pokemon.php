@@ -10,9 +10,10 @@ class Pokemon
     public $resistance; //the Strength of the pokemon
     public $weakness; //the Weakness of the pokemon
     public $attacks = []; //the Attacks of the pokemon
+    public $picture = []; //the pictures or gifs of the pokemon
 
 
-    public function __construct($_name, $_type, $_health, $_hitPoints, $_resistance, $_weakness, $_attacks)
+    public function __construct($_name, $_type, $_health, $_hitPoints, $_resistance, $_weakness, $_attacks, $_picture)
     {
         $this->name = $_name;
         $this->type = $_type;
@@ -21,6 +22,7 @@ class Pokemon
         $this->resistance = $_resistance;
         $this->weakness = $_weakness;
         $this->attacks = $_attacks;
+        $this->picture = $_picture;
     }
 
     //calculates the fight between 2 pokemon
